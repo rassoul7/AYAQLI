@@ -1,0 +1,25 @@
+services:
+  db:
+    image: docker.io/pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: ayaqli
+      POSTGRES_PASSWORD: ayaqli
+      POSTGRES_DB: ayaqli
+    ports:
+      - "5433:5432"
+    volumes:
+      - ayaqli_db_data:/var/lib/postgresql/data
+
+  api:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgresql+psycopg://ayaqli:ayaqli@db:5432/ayaqli
+    ports:
+      - "8001:8000"
+    depends_on:
+      - db
+    volumes:
+      - ./backend:/app
+
+volumes:
+  ayaqli_db_data:

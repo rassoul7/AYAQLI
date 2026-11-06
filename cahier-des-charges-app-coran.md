@@ -78,14 +78,14 @@ Il n'existe pas aujourd'hui d'outil moderne, unifié et centré exclusivement su
 
 ## 6. Architecture technique (proposition)
 
-| Composant | Proposition |
+| Composant | Choix |
 |---|---|
-| Application mobile | Flutter ou React Native |
-| Backend | API (Node.js ou Python) |
+| Application mobile | **Flutter** (Dart) |
+| Backend | **API Python (FastAPI)** |
 | Base de données versets/traductions | Base relationnelle (PostgreSQL) |
 | Recherche sémantique | Base vectorielle (ex : pgvector) sur les traductions |
 | Stockage audio | Fichiers audio par verset et par récitateur, mis en cache localement |
-| Authentification | Système de compte utilisateur standard |
+| Authentification | Email + OAuth social (Google/Apple) |
 
 ---
 
@@ -112,10 +112,10 @@ Il n'existe pas aujourd'hui d'outil moderne, unifié et centré exclusivement su
 
 ## 9. Points à valider / arbitrer
 
-- [ ] Langue(s) de traduction à inclure au lancement (français seul, ou multilingue dès le départ ?)
-- [ ] Récitateur(s) audio à intégrer en priorité
-- [ ] Méthode d'authentification (email, téléphone, autre)
-- [ ] Niveau de détail de "l'explication" pour chaque verset (traduction seule vs versets liés vs autre)
+- [x] Langue(s) de traduction à inclure au lancement : **multilingue dès le départ** (français + anglais minimum)
+- [x] Récitateur(s) audio à intégrer en priorité : **Mishary Alafasy, Abdul Basit, Saad Al-Ghamdi** ; architecture audio pensée multi-récitateurs générique pour en ajouter facilement d'autres
+- [x] Méthode d'authentification : **email + OAuth social (Google/Apple)** — Sign in with Apple obligatoire si présence sur iOS
+- [x] Niveau de détail de "l'explication" : **traduction + versets liés** (renvois vers d'autres versets sur le même concept, pas de texte explicatif rédigé — respecte la contrainte "pas de tafsir tiers")
 - [x] Nom de l'application : **Ayaqli**
 
 ---
